@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Base Apparel coming soon page</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="container-logo"><img src="./images/logo.svg" alt="Base Apparel Logo"></header>
+  <main class="container">
+    <!-- <div class="container-hero-img"></div> -->
+    <section class="container-text">
+      <h1 class="title">We're <span class="bold">coming soon</span></h1>
+      <p class="description">
+        Hello fellow shoppers! We're currently building our new fashion store.
+        Add your email below to stay up-to-date with announcements and our launch deals.
+      </p>
+      <div class="container-input">
+        <input class="input" type="email" name="email" id="email" placeholder="Email Address">
+        <img class="img-erro" src="images/icon-error.svg" alt="">
+        <button class="btn-arrow"><img src="./images/icon-arrow.svg" alt=""></button>
+      </div>
+      <p class="text-erro">please provide a valid email</p>
+    </section>
+  </main>
+
+  <script>
+
+    const btn = document.querySelector('.btn-arrow');
+    const containerInput = document.querySelector('.container-input');
+    const input = document.querySelector(".input"); 
+
+    function validateEmail() {
+      const emailValue = input.value;      
+      const regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'g');
+      const isValid = regex.test(emailValue);
+
+      if(isValid) {
+        containerInput.classList.add('valid'); 
+      }else {
+        containerInput.classList.add('invalid'); 
+      }
+    }
+
+    function removeError() {
+      containerInput.classList.remove('invalid');
+      containerInput.classList.remove('valid'); 
+      console.log('sim');
+    }
+
+    input.addEventListener('input', removeError);
+    btn.addEventListener('click', validateEmail);
+      
+  </script>
+</body>
+
+</html>
